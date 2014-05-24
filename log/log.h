@@ -18,7 +18,6 @@
  *
  * =====================================================================================
  */
-
 #ifndef LOGGER_H
 #define LOGGER_H
 
@@ -26,7 +25,6 @@
 #include <fstream>
 #include <ctime>
 #include <sstream>
-
 /**
  * @brief       streambuf for null stream
  * @author      amadeu zou
@@ -247,6 +245,7 @@ public:
      */
     std::string get_label()
     {
+        //the _label will be initialized as "" when the Logger object is created
         if (_label.length() == 0)
             return _label;
         else
@@ -262,7 +261,7 @@ public:
         _level = static_cast < LogLevel > (v);
     }
 
-    void set_label(char *lab)
+    void set_label(std::string lab)
     {
         _label = lab;
     }
@@ -271,7 +270,7 @@ private:
     std::ostream * _os;
     time_t _time;
     LogLevel _level;
-    std::string _label = "";
+    std::string _label;
     NullStream _ns;
 };
 #endif
